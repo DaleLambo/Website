@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "VerifyAccount";
+}
+<style>
+    body {
+        background-image: url('../images/bg3.jpg');
+        background-size: cover;
+    }
+</style>
+<h2>VerifyAccount</h2>
+
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    <body>
+        <div class="alert alert-success">
+            <strong>Success!</strong> Your account has been activated sucessfully. Click here to @Html.ActionLink("Login", "Login", "User");
+        </div>
+    </body>
+}
+else
+{
+    <body>
+        <div class="alert alert-danger">
+            <strong>Error!</strong> @ViewBag.Message
+        </div>
+    </body>
+}

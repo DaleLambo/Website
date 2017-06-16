@@ -1,0 +1,77 @@
+﻿@model LoginAndRegistration.Models.UserLogin
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<head>
+    <title>YOURSPACE Login</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Smart Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all">
+    <!-- online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSlabo+27px&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <!--//online-fonts -->
+</head>
+<body>
+    <!--header-->
+    <div class="agileheader">
+        <h1>YourSpace</h1>
+    </div>
+    <!--//header-->
+    <!--main-->
+    <div class="main-w3l">
+        <div class="w3layouts-main">
+            <h2>Login Now</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email", @type = "email" } })
+                    @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
+                    <div class="form-group has-feedback">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+
+                    <span>
+                        @Html.CheckBoxFor(model => model.RememberMe)Remember Me
+                        @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                    </span>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Log In" class="btn btn-default" />
+                    </div>
+
+                    <div>                       
+                        <p>Click here to @Html.ActionLink("Register Account Now", "Registration", "User")</p>
+                    </div>
+            }
+        </div>
+        </div>
+    <!--footer-->
+    <div class="footer-w3l">
+        <p>&copy; 2016 YOURSPACE Login Form. All rights reserved | Design by <a href="https://www.linkedin.com/in/dale-lambert-a35965bb/">Dale Lambert</a></p>
+    </div>
+    <!--//footer-->
+</body>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
